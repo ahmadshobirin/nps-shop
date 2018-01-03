@@ -1,0 +1,227 @@
+*{
+    
+}
+
+body {
+    background-image: url("../images/bg.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: "Lato";
+}
+
+div .social {
+    text-align: right;
+}
+div .social a {
+    display: inline-block;
+    width: 32px;
+    border: none;
+    font-size: 20px;
+    border-radius: 50%;
+    margin: 4px;
+    color: #fff;
+    text-align: center;
+    background-color: #798FA5;
+    height: 32px;
+    opacity: 0.8;
+    line-height: 32px;
+}
+div .social a:hover {
+    display: inline-block;
+    width: 32px;
+    border: none;
+    font-size: 20px;
+    border-radius: 50%;
+    margin: 4px;
+    text-align: center;
+    background-color: #1565C0;
+    height: 32px;
+    opacity: 1;
+    line-height: 32px;
+}
+
+.fa.footer-contacts-icon {
+    background-color: #1565C0;
+    color: #fff;
+    font-size: 18px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 38px;
+    margin: 10px 15px 10px 0;
+    vertical-align: middle;
+}
+
+    .vcenter {
+        display: table-cell;
+        vertical-align: middle;
+        float: none;
+        font-size: 18px;
+    }
+
+img.resize {
+    width:50%; /* you can use % */
+    height: auto;
+    margin-left: 30px;
+}
+
+.features {
+    color: white;
+    height: 600px;
+}
+
+.peta {
+    width:410px;
+    height:250px;
+    background:white;
+}
+
+.caption {
+    font-size: 20px;
+}
+
+.title {
+    font-family: "Lato";
+}
+
+.see-more {
+    border: 5px solid #FFEB3B;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    color: #FFEB3B;
+}
+
+.see-more:hover{
+    border: 5px solid rgb(255, 255, 255);
+    border-radius: 30px;
+    margin-bottom: 20px;
+    color: rgb(255, 255, 255);
+}
+.jumbotron {
+    background-color: none;
+}
+
+.registration {
+    margin-top: 8%;
+    margin-bottom: 4%;
+}
+
+select {
+    border: 0;
+    background: transparent;
+    font-size: 14px;
+    font-family: Lato-Bold;
+}
+
+.image {
+    margin-top: 15%;
+    padding-left: 5%;
+    color: white;
+}
+
+.image>h1 {
+    font-size: 50px;
+}
+
+p {
+    margin: 12px;
+}
+
+.paket {
+    color:white;
+    margin-top: 65px; 
+    margin-bottom: 65px;
+}
+
+@media (max-width: 1024px) {
+    .peta {
+        width:300px;
+        height:200px;
+        background:white;
+    }
+
+    p.vcenter {
+        font-size: 14px;
+    }
+    .caption {
+        font-size: 16px;
+    }
+    .title {
+        margin-top: 10px;
+    }
+    .features {
+        color: white;
+        height: 500px;
+    }
+    .paket {
+        color:white;
+        margin-top: 65px; 
+        margin-bottom: 45px;
+    }
+    .see-more {
+        font-size: 14px;
+        border: 3px solid #FFEB3B;
+        color: #FFEB3B;
+    }
+    .see-more:hover{
+        border: 3px solid rgb(255, 255, 255);
+        color: rgb(255, 255, 255);
+    }
+}
+
+@media (max-width: 800px) {
+    .image {
+        text-align: center;
+    }
+    .registration {
+        /*margin-left: 16.6666667%;
+        
+*/      width: 250px;
+        height: auto;    
+        margin-top: 9%;
+    }
+    .features {
+        color: white;
+        height: 420px;
+    }
+    .input {
+        height: 30px;
+        font-size: 12px;
+    }
+    .peta {
+        width:710px;
+        height:200px;
+        background:white;
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 425px) {
+    .registration {
+        margin-left: 5%;
+        margin-top: 15%;
+    }
+    .peta {
+        width:370px;
+        height:200px;
+        background:white;
+    }
+    .features {
+        color: white;
+        height: 460px;
+    }
+    .resize {
+        margin-left:25%;
+    }
+}
+
+@media (max-width: 375px) {
+    .peta {
+        width:315px;
+        height:200px;
+        background:white;
+    }
+}
