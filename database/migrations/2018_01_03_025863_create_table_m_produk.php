@@ -17,8 +17,6 @@ class CreateTableMProduk extends Migration
             $table->increments('id');
             $table->string('code',30);
             $table->string('name',30);
-            $table->integer('harga_jual');
-            $table->integer('harga_beli');
             $table->integer('kategori_id')->unsigned();
             $table->timestamps();
         });
