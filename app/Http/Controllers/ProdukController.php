@@ -130,4 +130,9 @@ class ProdukController extends Controller
         //set value request code
         return 'PRD'.$nol.$getLastCode;
     }
+
+    public function Development()
+    {
+        # code...
+    }
 }
