@@ -25,4 +25,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('admin/kategori-produk','KategoriProdukController');
 
+    Route::resource('admin/produk','ProdukController');
+
 });

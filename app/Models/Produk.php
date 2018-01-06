@@ -9,4 +9,9 @@ class Produk extends Model
     protected $table = 'm_produk';
 
     protected $guarded = ['id'];
+
+    public function category()
+    {
+        return $this->belongsTo(KategoriProduk::class,'kategori_id');
+    }
 }

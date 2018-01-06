@@ -24,6 +24,12 @@
 							<i class="fa fa-check-square"></i> Kategori Produk
 						</a>
 					</li>
+
+                    <li style="padding-left:20px;" class="@yield('produk')">
+						<a href="{{ route('produk.index') }}">
+							<i class="fa fa-check-square"></i> Produk
+						</a>
+					</li>
 				</ul>
 
             </li>
