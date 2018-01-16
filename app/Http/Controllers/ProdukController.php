@@ -28,9 +28,9 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        $code = $this->setCodeProduk();
+        // $code = $this->setCodeProduk();
         $kategoriProduk = KategoriProduk::orderBy('name')->get();
-        return view('admin.produk.create',compact('kategoriProduk','code'));
+        return view('admin.produk.create',compact('kategoriProduk'));
 
     }
 
@@ -92,7 +92,7 @@ class ProdukController extends Controller
         // dd($request->all());
 
         $this->validate($request,[
-            'code' => 'required|max:30',
+            'code' => 'required|max:30|unique:m_produk,code,'.$id,
             'name' => 'required|max:30',
             'kategori_id' => 'required',
         ]);

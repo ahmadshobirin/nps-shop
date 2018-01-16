@@ -34,6 +34,27 @@
 
             </li>
 
+            <li class="treeview @yield('treeview_master')">
+				<a href="#">
+					<i class='fa fa-book'></i>
+					<span>Transaksi</span>
+					<i class="fa fa-angle-left pull-right"></i>
+				</a>
+
+                <ul class="treeview-menu">
+					<li style="padding-left:20px;" class="@yield('treeview_user_approval')">
+						<a href="{{ route('customer.index') }}">
+							<i class="fa fa-check-square"></i>Buat Transaksi
+						</a>
+					</li>
+
+                    <li style="padding-left:20px;" class="@yield('produk')">
+						<a href="{{ route('kategori-produk.index') }}">
+							<i class="fa fa-check-square"></i> Data Transaksi
+						</a>
+					</li>
+                <ul>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->

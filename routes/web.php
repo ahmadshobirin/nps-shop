@@ -27,4 +27,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('admin/produk','ProdukController');
 
+    Route::get('admin/transaksi','TransaksiController@index')->name('transaksi.index');
+    Route::get('admin/transaksi/create','TransaksiController@create')->name('transaksi.create');
+
 });

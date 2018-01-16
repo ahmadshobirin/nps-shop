@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableMProduk extends Migration
+class CreateTableTTransaksi extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateTableMProduk extends Migration
      */
     public function up()
     {
-        Schema::create('m_produk', function (Blueprint $table) {
+        Schema::create('t_transaksi', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('code',30);
-            $table->string('name',30);
+            $table->integer('customer_id')->unsigned();
+            $table->datetime('date_transaction')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->datetime('payment_date')->nullable();
+            $table->string('source',50)->nullable();
+            $table->enum('type', ['paid', 'unpaid'])->default('unpaid');
             $table->text('deskripsi')->nullable();
-            $table->integer('kategori_id')->unsigned();
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ class CreateTableMProduk extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('m_produk');
+        Schema::dropIfExists('t_transaksi');
     }
 }
