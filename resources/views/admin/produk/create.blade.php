@@ -29,7 +29,7 @@
                     @include('admin.displayerror')
                     <div class="form-group">
                         <label class=" control-label">Kode Produk <span class="required">*</span></label>
-                        <input type="text" name="code" value="{{$code}}" class="form-control" readonly>
+                        <input type="text" name="code" value="" class="form-control" placeholder="" required maxlength="30">
                     </div>
 
                     <div class="form-group">
@@ -45,6 +45,11 @@
                     <div class="form-group">
                         <label class=" control-label">Nama Produk <span class="required">*</span></label>
                         <input type="text" name="name" value="" class="form-control" placeholder="Nama Produk..." maxlength="30">
+                    </div>
+
+                    <div class="form-group">
+                        <label class=" control-label">Deskripsi</label>
+                        <textarea name="deskripsi" class="form-control"></textarea>
                     </div>
                 </div>
 

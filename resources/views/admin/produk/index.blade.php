@@ -23,8 +23,10 @@
                 <thead>
                     <tr>
                         <th style="width:15%">No.</th>
+                        <th>Kode</th>
                         <th>Nama</th>
                         <th>Kategori</th>
+                        <th>Deskripsi</th>
                         <th class="nosort">Aksi</th>
                     </tr>
                 </thead>
@@ -33,8 +35,10 @@
                     @foreach ($dataProduk as $produk)
                         <tr>
                             <td>{{$no++}}</td>
+                            <td>{{$produk->code}}</td>
                             <td>{{$produk->name}}</td>
                             <td>{{$produk->category->name}}</td>
+                            <td> <span title="{{$produk->deskripsi}}">{{str_limit($produk->deskripsi,30,'(...)')}}</span> </td>
                             <td>
                                 <a href="{{ route('produk.edit',$produk->id) }}" class="btn btn-primary btn-sm"><span class="fa fa-pencil"></span></a>
 
@@ -63,8 +67,11 @@
     <script type="text/javascript">
         $('#table').DataTable({
             "columnDefs": [
-            { "orderable": false, "targets": 3 }
+            { "orderable": false, "targets": 4 }
           ]
+        });
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
 @stop
