@@ -43,13 +43,13 @@
 
                 <ul class="treeview-menu">
 					<li style="padding-left:20px;" class="@yield('treeview_user_approval')">
-						<a href="{{ route('customer.index') }}">
+						<a href="{{ route('transaksi.create') }}">
 							<i class="fa fa-check-square"></i>Buat Transaksi
 						</a>
 					</li>
 
                     <li style="padding-left:20px;" class="@yield('produk')">
-						<a href="{{ route('kategori-produk.index') }}">
+						<a href="{{ route('transaksi.index') }}">
 							<i class="fa fa-check-square"></i> Data Transaksi
 						</a>
 					</li>

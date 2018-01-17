@@ -28,6 +28,11 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('admin/produk','ProdukController');
 
     Route::get('admin/transaksi','TransaksiController@index')->name('transaksi.index');
+
     Route::get('admin/transaksi/create','TransaksiController@create')->name('transaksi.create');
+
+    //ajax-transaction
+    Route::get('transaksi/get-customer/{id}','TransaksiController@getCustomer');
+    Route::get('transaksi/get-produk-by-kategori/{id}','TransaksiController@getProduk');
 
 });

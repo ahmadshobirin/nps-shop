@@ -45,7 +45,7 @@ class ProdukController extends Controller
         // dd($request->all());
 
         $this->validate($request,[
-            'code' => 'required|max:30',
+            'code' => 'required|max:30|unique:m_produk',
             'name' => 'required|max:30',
             'kategori_id' => 'required',
         ]);
