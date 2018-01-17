@@ -73,13 +73,29 @@
                                 <label class=" control-label">Pilih Barang <span class="required">*</span></label>
                                 <select class="form-control input-sm select2" name="customer_id" id="barang">
                                     <option value="">Pilih Barang</option>
-
-
                                 </select>
                             </div>
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th>Produk Kode</th>
+                                        <th>Produk</th>
+                                        <th>Harga Beli</th>
+                                        <th>Harga Jual</th>
+                                        <th>QTY</th>
+                                        <th>Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="box-footer">
