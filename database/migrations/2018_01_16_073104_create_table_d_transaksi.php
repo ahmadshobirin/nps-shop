@@ -21,6 +21,7 @@ class CreateTableDTransaksi extends Migration
             $table->integer('qty');
             $table->integer('selling_price');
             $table->integer('purchase_price');
+            $table->integer('subTotal');
             $table->timestamps();
         });
     }

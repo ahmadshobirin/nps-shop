@@ -31,8 +31,16 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('admin/transaksi/create','TransaksiController@create')->name('transaksi.create');
 
+    Route::post('admin/transaksi','TransaksiController@store')->name('transaksi.store');
+
+    Route::get('admin/transaksi/{id}','TransaksiController@show')->name('transaksi.detail');
+
     //ajax-transaction
     Route::get('transaksi/get-customer/{id}','TransaksiController@getCustomer');
+
     Route::get('transaksi/get-produk-by-kategori/{id}','TransaksiController@getProduk');
+
+    Route::post('admin/transaksi/get-produk','TransaksiController@getDetailProduk');
+
 
 });
