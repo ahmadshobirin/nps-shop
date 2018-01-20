@@ -21,6 +21,7 @@ class CreateTableTTransaksi extends Migration
             $table->string('source',50)->nullable();
             $table->enum('type', ['paid', 'unpaid'])->default('unpaid');
             $table->text('deskripsi')->nullable();
+            $table->integer('grand_total');
             $table->timestamps();
         });
     }
