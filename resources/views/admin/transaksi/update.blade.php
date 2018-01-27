@@ -23,9 +23,9 @@
     <div class="col-md-10 col-md-offset-1">
         <div class="box box-info">
 
-            <form action="{{ route('transaksi.store') }}" method="post">
+            <form action="{{ route('transaksi.update',$header->id_transaction) }}" method="post">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                {{ method_field('post') }}
+                {{ method_field('patch') }}
                 <div class="box-body">
                     @include('admin.displayerror')
 
@@ -33,11 +33,11 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class=" control-label">Nama Customer <span class="required">*</span></label>
-                                <select class="form-control input-sm select2" name="customer_id" id="customer" required>
+                                <select class="form-control input-sm select2" name="customer_id" id="customer" disabled>
                                     <option value="">Pilih Customer...</option>
 
                                     @foreach ($allCustomer as $customer)
-                                        <option value="{{ $customer->id  }}">{{ $customer->name }}</option>
+                                        <option @if($header->customer_id == $customer->id) selected @endif value="{{ $customer->id  }}">{{ $customer->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -45,13 +45,13 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="">Telpon</label>
-                                <input type="text" id="telpon-customer" readonly class="form-control input-sm">
+                                <input type="text" id="telpon-customer" readonly class="form-control input-sm" value="{{ $header->telephone }}">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="">Alamat</label>
-                                <textarea id="alamat-customer" rows="1"  class="form-control input-sm" readonly></textarea>
+                                <textarea id="alamat-customer" rows="1"  class="form-control input-sm" readonly> {{ $header->address }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -64,8 +64,8 @@
                                 <label for="">Tipe Beli <span class="required">*</span></label>
                                 <select name="type" class="form-control input-sm" required id="type-beli">
                                     <option value="">Pilih Tipe Beli...</option>
-                                    <option value="paid">Lunas</option>
-                                    <option value="unpaid">Hutang</option>
+                                    <option @if( $header->type == 'paid' ) selected  @endif value="paid">Lunas</option>
+                                    <option @if( $header->type == 'unpaid' ) selected  @endif value="unpaid">Hutang</option>
                                 </select>
                             </div>
                         </div>
@@ -82,15 +82,15 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Sumber <span class="required">*</span></label>
-                                <input type="text" class="form-control" name="source" value="" maxlength='30'>
+                                <label>Sumber</label>
+                                <input type="text" class="form-control" value="{{ $header->source }}" maxlength='30' readonly>
                             </div>
                         </div>
 
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4">
+                        {{--  <div class="col-md-4">
                             <div class="form-group">
                                 <label class=" control-label">Kategori Produk <span class="required">*</span></label>
                                 <select class="form-control input-sm select2" name="kategori" id="kategori" required>
@@ -109,11 +109,11 @@
                                     <option value="">Pilih Barang...</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="col-md-4">
+                        </div>  --}}
+                        <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Keterangan </label>
-                                    <textarea name="deskripsi" class="form-control input-sm"></textarea>
+                                    <textarea name="deskripsi" class="form-control input-sm" readonly id="deskripsi">{{ $header->deskripsi }}</textarea>
                                 </div>
                             </div>
                     </div>
@@ -123,16 +123,26 @@
                             <table class="table table-responsive">
                                 <thead>
                                     <tr>
-                                        <th>Produk Kode</th>
-                                        <th>Produk</th>
-                                        <th>Harga Beli</th>
-                                        <th>Harga Jual</th>
-                                        <th>QTY</th>
-                                        <th>Subtotal</th>
-                                        <th width="4%">Opsi</th>
+                                        <th>No.</th>
+                                        <th width="20%">Barang</th>
+                                        <th width="15%">Harga Beli</th>
+                                        <th width="15%">Harga Jual</th>
+                                        <th>Qty</th>
+                                        <th width="15%">Total Bayar</th>
                                     </tr>
                                 </thead>
                                 <tbody id="tbody">
+                                    <?php $i = 1; $subTotal = 0;?>
+                                    @foreach($detail as $data)
+                                        <tr>
+                                            <td>{{$i++}}</td>
+                                            <td>{{ $data->name }}</td>
+                                            <td>Rp. {{ number_format($data->purchase_price,0,'.','.') }} </td>
+                                            <td>Rp. {{ number_format($data->selling_price,0,'.','.') }} </td>
+                                            <td>{{ $data->qty }}</td>
+                                            <td>Rp. {{ number_format($data->subTotal,0,'.','.') }}</td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -144,7 +154,7 @@
                                     <label for=""><b>Total Harga </b></label>
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon1">Rp.</span>
-                                        <input type="number" min="0"  name="total" id="total" class="total form-control input-sm" value="0" name="grandTotal">
+                                        <input type="text" id="total" class="total form-control input-sm" value="{{number_format($header->grand_total,0,'.','.')}}" readonly>
                                     </div>
                                 </div>
                         </div>
@@ -154,7 +164,7 @@
                 <div class="box-footer">
                     <div class="pull-right">
                         <a href="{{ route('transaksi.index')}}" class="btn btn-info">Kembali</a>
-                        <input type="reset" class="btn btn-danger" value="Batal">
+                        {{--  <input type="reset" class="btn btn-danger" value="Batal">  --}}
                         <input  type="submit" class="btn btn-success" value="Simpan">
                     </div>
                 </div>
@@ -198,6 +208,8 @@
             });
         });
 
+        
+
         $('#type-beli').on("change",function(){
 
             //alert($(this).val());
@@ -206,6 +218,9 @@
                 $('#datepicker1').attr('readonly',false);
                 $('#datepicker1').attr('disabled',false);
                 $('#datepicker1').attr('required',true);
+
+                $('#deskripsi').attr('readonly',false);
+                
 
                 var today = new Date();
                 //var result = today.setDate(date.getDate() + 1);
@@ -225,6 +240,8 @@
                 $('#datepicker1').attr('disabled',true);
                 $('#datepicker1').attr('required',false);
                 $('#datepicker1').val('');
+
+                $('#deskripsi').attr('readonly',true);
             }
         });
 

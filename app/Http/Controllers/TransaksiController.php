@@ -124,6 +124,66 @@ class TransaksiController extends Controller
 		return view('admin.transaksi.detail',compact('header','detail'));
 	}
 
+	public function edit($id)
+	{
+		$allCustomer = Customer::orderBy('name','ASC')->get();
+
+		$kategoriProduk = KategoriProduk::orderBy('name','ASC')->get();
+
+		$allProduk = Produk::orderBy('name','ASC')->get();
+
+		$header = DB::table('t_transaksi')
+				->join('m_customer','t_transaksi.customer_id','m_customer.id','t_transaksi.id')
+				->select('*','t_transaksi.id as id_transaction')
+				->where('t_transaksi.id',$id)
+				->first();
+		
+		$detail = DB::table('d_transaksi')
+				->join('m_produk','d_transaksi.produk_id','m_produk.id')
+				->join('m_kategori_produk','d_transaksi.kategori_produk_id','m_kategori_produk.id')
+				->where('transaksi_id',$id)
+				->get();
+		// dd($detail,$header);
+		return view('admin.transaksi.update',compact('header','detail','allCustomer','allProduk','kategoriProduk'));		
+	}
+
+	public function update(Request $request,$id)
+	{
+		// dd($request->all());
+
+		if( $request->type == 'paid' ){
+
+			DB::beginTransaction();
+			try{
+				//update header
+
+				DB::table('t_transaksi')->where('t_transaksi.id',$id)
+					->update([
+						'type' => $request->type,
+						'payment_date' => date('Y-m-d',strtotime($request->payment_date)),
+						'deskripsi' => $request->deskripsi,
+					]);
+
+				DB::commit();				
+			}catch(\Exceptionn $e){
+				DB::rollback();
+				dd($e);
+			}
+			
+		}
+
+		return redirect()->route('transaksi.index');
+	}
+
+	public function destroy($id)
+	{
+		DB::table('t_transaksi')->where('t_transaksi.id',$id)->delete();
+
+		DB::table('d_transaksi')->where('transaksi_id',$id)->delete();
+
+		return redirect()->route('transaksi.index');
+		
+	}
 
 	//ajax-transaction
 	public function getCustomer($id)

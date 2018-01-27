@@ -35,6 +35,12 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('admin/transaksi/{id}','TransaksiController@show')->name('transaksi.detail');
 
+    Route::get('admin/transaksi/{id}/edit','TransaksiController@edit')->name('transaksi.edit');
+
+    Route::patch('admin/transaksi/{id}','TransaksiController@update')->name('transaksi.update');
+
+    Route::get('admin/transaksi/{id}/delete','TransaksiController@destroy')->name('transaksi.destroy');
+
     //ajax-transaction
     Route::get('transaksi/get-customer/{id}','TransaksiController@getCustomer');
 

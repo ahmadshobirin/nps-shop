@@ -38,9 +38,16 @@
                             <td>{{ date('d-m-Y',strtotime($value->date_transaction)) }}</td>
                             <td>{{ ($value->type == 'paid') ? 'Lunas' : 'Hutang' }}</td>
                             <td>
-                                {{--  <a href="{{ route('customer.edit',$value->id) }}" class="btn btn-primary btn-sm"><span class="fa fa-pencil"></span></a>  --}}
+
+                                @if( $value->type == 'unpaid' )
+                                    <a href="{{ route('transaksi.edit',$value->id_transaction) }}" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Edit ?"><span class="fa fa-pencil"></span></a>
+
+                                     <a href="{{ route('transaksi.destroy',$value->id_transaction) }}" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus ?">
+                                        <span class="fa fa-trash"></span>
+                                    </a>                                    
+                                @endif
                                 
-                                <a href="{{ route('transaksi.detail',$value->id_transaction) }}" class="btn btn-primary btn-sm"><span class="fa fa-external-link"></span></a>
+                                <a href="{{ route('transaksi.detail',$value->id_transaction) }}" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Detail ?"><span class="fa fa-external-link"></span></a>
 
                                 {{--  <a href="{{ route('customer.destroy',$value->id_transaction) }}" class="btn btn-danger btn-sm" onclick="event.preventDefault(); document.getElementById('delete-form').submit();">
                                         <span class="fa fa-trash"></span>
