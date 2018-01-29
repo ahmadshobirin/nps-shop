@@ -18,8 +18,23 @@ class TransaksiController extends Controller
 						->select('*','t_transaksi.id as id_transaction')
 						->orderBy('id_transaction','DESC')
 						->get();
+
+		$customerTrans = DB::table('m_customer')
+						->join('t_transaksi','t_transaksi.customer_id','m_customer.id')
+						->select('m_customer.id','m_customer.name')
+						->groupBy('m_customer.id','m_customer.name')
+						->orderBy('name','ASC')
+						->get();
+
+		$barang = DB::table('d_transaksi')
+				->join('m_produk','m_produk.id','d_transaksi.produk_id')
+				->select('m_produk.id','m_produk.name')
+				->groupBy('m_produk.id','m_produk.name')
+				->orderBy('name','ASC')
+				->get();
+		
 		// dd($dataTransaksi);
-		return view('admin.transaksi.index',compact('dataTransaksi'));
+		return view('admin.transaksi.index',compact('dataTransaksi','customerTrans','barang'));
 	}
 
 	public function create()
@@ -83,6 +98,7 @@ class TransaksiController extends Controller
 				'source' => $request->source,
 				'deskripsi' => $request->deskripsi,
 				'grand_total' => $request->total,
+				'type' => $request->type,
 			]);
 
 			$newTransaction = DB::table('t_transaksi')->orderBy('id','DESC')->first();
@@ -118,6 +134,7 @@ class TransaksiController extends Controller
 		$detail = DB::table('d_transaksi')
 				->join('m_produk','d_transaksi.produk_id','m_produk.id')
 				->join('m_kategori_produk','d_transaksi.kategori_produk_id','m_kategori_produk.id')
+				->select('d_transaksi.*','m_produk.name as produk','m_produk.code','m_kategori_produk.name as kategori')
 				->where('transaksi_id',$id)
 				->get();
 		// dd($detail);

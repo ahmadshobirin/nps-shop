@@ -48,5 +48,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('admin/transaksi/get-produk','TransaksiController@getDetailProduk');
 
+    //report
+    Route::get('transaksi/report','ReportController@transaksiController');
+    
+
 
 });
