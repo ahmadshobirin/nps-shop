@@ -98,6 +98,7 @@ class TransaksiController extends Controller
 				'source' => $request->source,
 				'deskripsi' => $request->deskripsi,
 				'grand_total' => $request->total,
+				'type' => $request->type,
 			]);
 
 			$newTransaction = DB::table('t_transaksi')->orderBy('id','DESC')->first();

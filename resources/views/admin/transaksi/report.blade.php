@@ -58,7 +58,7 @@
                 <tr>
                     <td>{{ date('d-m-Y',strtotime($result->date_transaction)) }}</td>
                     <td>{{ date('d-m-Y',strtotime($result->customer)) }}</td>
-                    <td>{{ ucfirst($result->type) }}</td>
+                    <td>{{ ($result->type == 'paid') ? 'Lunas' : 'Hutang' }}</td>
                     <td>{{ date('d-m-Y',strtotime($result->payment_date)) }}</td>
                     <td>{{ ucfirst($result->source) }}</td>
                     <td>{{ ucfirst($result->kategori) }}</td>
