@@ -30,9 +30,9 @@
                 <a class="btn btn-default btn-md" data-toggle="modal" data-target="#print" id="btnprintout">
                     <i class="fa fa-file"></i> View Report
                 </a>
-                {{--  <a  href="javascript:;" data-toggle="modal" data-target="#print" id="btnprint" class="btn btn-warning btn-md">
+                <a  href="javascript:;" data-toggle="modal" data-target="#print" id="btnprint" class="btn btn-warning btn-md">
                     <i class="fa fa-file-pdf-o"></i> Export to PDF
-                </a>  --}}
+                </a>
             </div>
             @include('admin.displayerror')
             <table class="table table-striped table-hover table-responsive" id="table">
@@ -104,7 +104,8 @@
                             <div class="form-group">
                                 <label>Status Bayar</label>
                                 <select class="select2 form-control" name="status" id="" style="width: 100%;">
-                                    <option selected value="paid">Lunas</option>
+                                    <option selected value="">Pilih Status Bayar...</option>
+                                    <option value="paid">Lunas</option>
                                     <option value="unpaid">Hutang</option>
                                 </select>
                             </div>
