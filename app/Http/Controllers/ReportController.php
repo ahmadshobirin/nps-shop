@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use PDF;
 
 class ReportController extends Controller
 {
@@ -22,13 +23,20 @@ class ReportController extends Controller
         'd_transaksi.purchase_price','d_transaksi.subTotal','d_transaksi.produk_id','m_produk.name as produk','m_kategori_produk.name as kategori');
         $query->where('date_transaction','>=',date('Y-m-d', strtotime($tglmulai)));
         $query->where('date_transaction','<=',date('Y-m-d', strtotime($tglsampai. ' + 1 days')));
-        $query->where('t_transaksi.type', $request->status);
+        if($request->status != null ){$query->where('t_transaksi.type', $request->status);}
         if($request->customer != null) {$query->where('t_transaksi.customer_id', $request->customer);}
         if($request->barang != null) {$query->where('d_transaksi.produk_id', $request->barang);}
 
         $results = $query->get();
-        // dd($data,$request->all());
-        return view('admin.transaksi.report',compact('results'));
+        // dd($results,$request->all());
+        // return view('admin.transaksi.report',compact('results','tglmulai','tglsampai'));
+        $pdf = PDF::loadview('admin.transaksi.report',['results' => $results,'tglmulai' => $tglmulai,'tglsampai' => $tglsampai]);
+        $pdf->setPaper('A4', 'landscape');
+
+        if( $request->type == 'view' ){
+            return $pdf->stream();
+        }
+        return $pdf->download('Laporan Penjualan '.$tglmulai.'-'.$tglsampai.'.pdf');
 
 
     }
