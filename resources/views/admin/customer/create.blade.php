@@ -29,17 +29,17 @@
                     @include('admin.displayerror')
                     <div class="form-group">
                         <label class=" control-label">Nama Customer <span class="required">*</span></label>
-                        <input type="text" name="name" class="form-control" placeholder="Nama Customer..." maxlength="30">
+                        <input type="text" name="name" class="form-control" placeholder="Nama Customer..." maxlength="30 required">
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Telpon</label>
-                        <input type="text" name="telephone" class="form-control" placeholder="Telpon..." maxlength="13" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                        <label class="control-label">Telpon <span class="required">*</span></label>
+                        <input type="text" name="telephone" class="form-control" placeholder="Telpon..." maxlength="13" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Alamat</label>
-                        <textarea name="address" class="form-control" placeholder="Alamat..."></textarea>
+                        <label class="control-label">Alamat <span class="required">*</span></label>
+                        <textarea name="address" class="form-control" placeholder="Alamat..." required></textarea>
                     </div>
                 </div>
 

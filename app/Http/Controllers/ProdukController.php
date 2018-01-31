@@ -110,9 +110,14 @@ class ProdukController extends Controller
      */
     public function destroy($id)
     {
-        Produk::where('id',$id)->delete();
+        $cekData = DB::table('d_transaksi')->where('produk_id',$id)->count();
 
-        return redirect()->route('produk.index');
+        if($cekData > 0 ){
+            return redirect()->route('produk.index')->with('message','Data tidak Bisa dihapus karena sudah dipakai untuk transaksi');
+        }
+
+        Produk::where('id',$id)->delete();
+        return redirect()->route('produk.index')->with('message-success','Data berhasil dihapus');
     }
 
     protected function setCodeProduk()
