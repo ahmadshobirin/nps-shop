@@ -58,7 +58,7 @@
                                 @if( $value->type == 'unpaid' )
                                     <a href="{{ route('transaksi.edit',$value->id_transaction) }}" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Edit ?"><span class="fa fa-pencil"></span></a>
 
-                                    <a href="{{ route('transaksi.destroy',$value->id_transaction) }}" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus ?">
+                                    <a href="{{ route('transaksi.destroy',$value->id_transaction) }}" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus ?" onclick="return confirm('Apakah Anda Yakin Untuk Menghapus ?')">
                                         <span class="fa fa-trash"></span>
                                     </a>                                    
                                 @endif
