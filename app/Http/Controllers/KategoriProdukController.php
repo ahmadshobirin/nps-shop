@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\KategoriProduk;
+use DB;
 
 class KategoriProdukController extends Controller
 {
@@ -99,8 +100,13 @@ class KategoriProdukController extends Controller
      */
     public function destroy($id)
     {
-        KategoriProduk::where('id',$id)->delete();
+        $cekData = DB::table('m_produk')->where('kategori_id',$id)->count();
 
-        return redirect()->route('kategori-produk.index');
+        if($cekData > 0 ){
+            return redirect()->route('kategori-produk.index')->with('message','Data tidak Bisa dihapus karena sudah dipakai untuk Produk');
+        }
+
+        KategoriProduk::where('id',$id)->delete();
+        return redirect()->route('kategori-produk.index')->with('message-success','Data berhasil dihapus');
     }
 }

@@ -56,10 +56,10 @@
                 <thead>
                     <tr>
                         <th width="2%">No.</th>
-                        <th width="10%">Kategori Barang</th>
-                        <th width="10%">Kode Barang</th>
-                        <th width="20%">Barang</th>
-                        <th width="15%">Harga Beli</th>
+                        <th width="15%">Kategori Barang</th>
+                        <th width="15%">Kode Barang</th>
+                        <th width="15%">Barang</th>
+                        {{--  <th width="15%">Harga Beli</th>  --}}
                         <th width="15%">Harga Jual</th>
                         <th>Qty</th>
                         <th width="15%">Total Bayar</th>
@@ -73,10 +73,10 @@
                             <td>{{ $data->kategori }}</td>
                             <td>{{ $data->code }}</td>
                             <td>{{ $data->produk }}</td>
-                            <td>Rp. {{ number_format($data->purchase_price,0,'.','.') }} </td>
-                            <td>Rp. {{ number_format($data->selling_price,0,'.','.') }} </td>
+                            {{--  <td>Rp. {{ number_format($data->purchase_price,0,'.','.') }} </td>  --}}
+                            <td style="text-align:right; padding-right:20px">Rp. {{ number_format($data->selling_price,0,'.','.') }} </td>
                             <td>{{ $data->qty }}</td>
-                            <td>Rp. {{ number_format($data->subTotal,0,'.','.') }}</td>
+                            <td style="text-align:right; padding-right:20px">Rp. {{ number_format($data->subTotal,0,'.','.') }}</td>
                         </tr>
                     @endforeach
                 </tbody>

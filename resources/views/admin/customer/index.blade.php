@@ -38,9 +38,9 @@
                             <td>{{ $value->address }}</td>
                             <td>{{ $value->telephone }}</td>
                             <td>
-                                <a href="{{ route('customer.edit',$value->id) }}" class="btn btn-primary btn-sm"><span class="fa fa-pencil"></span></a>
+                                <a href="{{ route('customer.edit',$value->id) }}" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Ubah"><span class="fa fa-pencil"></span></a>
 
-                                <a href="{{ route('customer.destroy',$value->id) }}" class="btn btn-danger btn-sm" onclick="event.preventDefault(); document.getElementById('delete-form').submit();">
+                                <a href="{{ route('customer.destroy',$value->id) }}" class="btn btn-danger btn-sm" onclick="event.preventDefault(); document.getElementById('delete-form').submit();" data-toggle="tooltip" data-placement="top" title="Hapus" >
                                         <span class="fa fa-trash"></span>
                                 </a>
 
@@ -66,7 +66,10 @@
         $('#table').DataTable({
             "columnDefs": [
             { "orderable": false, "targets": 4 }
-          ]
+         ]
         });
+
+        
+        
     </script>
 @stop

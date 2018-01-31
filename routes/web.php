@@ -19,6 +19,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/profile','UserController@edit');
+Route::post('/profile','UserController@update');
+
 Route::middleware(['auth'])->group(function () {
 
     Route::resource('admin/customer','CustomerController');

@@ -7,7 +7,7 @@
 
 
 @section('customcss')
-    <link rel="stylesheet" href="{{URL::asset('css/datatables.min.css')}}">\
+    <link rel="stylesheet" href="{{URL::asset('css/datatables.min.css')}}">
     <link href="{{asset('css/bootstrap-datepicker.min.css')}}" rel="stylesheet" />
     <link rel="stylesheet" href="{{URL::asset('plugins/select2.min.css')}}">
     <link href="{{asset('plugins/bootstrap-timepicker.min.css')}}" rel="stylesheet" />

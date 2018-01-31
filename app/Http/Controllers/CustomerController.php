@@ -103,8 +103,13 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        Customer::where('id',$id)->delete();
 
-        return redirect()->route('customer.index');
+        $cekDataCustomer = DB::table('t_transaksi')->where('customer_id',$id)->count();
+        if($cekDataCustomer > 0 ){
+            return redirect()->route('customer.index')->with('message','Data tidak Bisa dihapus karena sudah dipakai untuk transaksi');
+        }
+
+        Customer::where('id',$id)->delete();
+        return redirect()->route('customer.index')->with('message-success','Data berhasil dihapus');
     }
 }
