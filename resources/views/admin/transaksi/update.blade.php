@@ -50,8 +50,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="">Alamat</label>
-                                <textarea id="alamat-customer" rows="1"  class="form-control input-sm" readonly> {{ $header->address }}</textarea>
+                                <label for="">Rincian</label>
+                                <textarea  rows="1"  class="form-control input-sm" name="rincian">{{ $header->rincian }}</textarea>
                             </div>
                         </div>
                     </div>

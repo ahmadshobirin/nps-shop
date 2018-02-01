@@ -52,12 +52,12 @@
                 <th>Nama Customer</th>
                 <th>Status Bayar</th>
                 <th>Tanggal Bayar</th>
-                <th>Sumber</th>
-                <th>Kategori Produk</th>
+                <th>Rincian</th>
                 <th>Produk</th>
                 <th>Harga Jual</th>
                 <th>Harga Beli</th>
                 <th>Laba</th>
+                <th>Sumber</th>
                 <th>Keterangan</th>
             </tr>
         </thead>
@@ -75,25 +75,27 @@
                     <td>{{ $result->customer }}</td>
                     <td>{{ ($result->type == 'paid') ? 'Lunas' : 'Hutang' }}</td>
                     <td width="10%">{{ ($result->payment_date != null) ? date('d-m-Y',strtotime($result->payment_date)) : '-'  }}</td>
-                    <td>{{ ucfirst($result->source) }}</td>
-                    <td>{{ ucfirst($result->kategori) }}</td>
+                    {{--  <td>{{ ucfirst($result->source) }}</td>  --}}
+                    <td>{{ ucfirst($result->rincian) }}</td>
                     <td>{{ ucfirst($result->produk) }}</td>
                     <td width="12%" style="text-align:right;">Rp.{{ number_format($result->subTotal,0,'.','.') }}</td>
                     <td width="12%" style="text-align:right;">Rp.{{ number_format($result->purchase_price,0,'.','.') }}</td>
                     <td width="12%" style="text-align:right;">Rp. {{ number_format($subTotal)}}</td>
-                    <td>{{ ucfirst($result->deskripsi) }}</td>
+                    <td>{{ ucfirst($result->source) }}</td>                    
+                    <td>{{ ucfirst(str_limit($result->deskripsi,20,' ...')) }}</td>
                 </tr>
             @endforeach
         </tbody>
-        {{--  <tfoot >
+        <tfoot >
             <tr>
-                <td style="border:none; text-align:right; padding-right:12px;" colspan="7">Total Beli: <b> Rp. {{ number_format($totalBeli)}} </b></td>
-                <td colspan="2" style="border:none; text-align:right; padding-right:12px;" >Total Jual : <b> Rp. {{ number_format($totalJual)}} </b></td>
-                <td colspan="2" style="border:none; text-align:right; padding-right:12px;" >Total Laba : <b> Rp. {{ number_format($totalLaba)}} </b></td>
+                <td style="border:none; text-align:right; padding-right:12px;" colspan="6">Grand Total </b></td>
+                <td style="border:none; text-align:right; padding-right:12px;"><b> Rp. {{ number_format($totalBeli)}} </b></td>
+                <td style="border:none; text-align:right; padding-right:12px;"> <b> Rp. {{ number_format($totalJual)}} </b></td>
+                <td style="border:none; text-align:right; padding-right:12px;"> <b> Rp. {{ number_format($totalLaba)}} </b></td>
             </tr>
-        </tfoot>  --}}
+        </tfoot>
     </table>
-    <table align="right" style="border:none; border-collapse:collapse; margin-top: 20px; font-family: arial, sans-serif; line-height:25px;">
+    {{--  <table align="right" style="border:none; border-collapse:collapse; margin-top: 20px; font-family: arial, sans-serif; line-height:25px;">
 
         <tr>
             <td>Total Jual</td>
@@ -110,6 +112,6 @@
             <td>&nbsp;&nbsp;</td>
             <td><b> Rp. {{ number_format($totalLaba)}} </b></td>
         </tr>
-    </table>
+    </table>  --}}
 </body>
 </html>

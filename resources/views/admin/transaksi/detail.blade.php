@@ -16,18 +16,18 @@
                     <table style="border: none;" width="100%">
                         <tr>
                             <td>Customer</td>
-                            <td></td>
+                            <td>&nbsp;&nbsp;</td>
                             <td>{{$header->name}}</td>
                         </tr>
                         <tr>
                             <td>Telpon</td>
-                            <td></td>
+                            <td>&nbsp;&nbsp;</td>
                             <td>{{$header->telephone}}</td>
                         </tr>
                         <tr>
                             <td>Keterangan</td>
-                            <td></td>
-                            <td>{{$header->deskripsi}}</td>
+                            <td>&nbsp;&nbsp;</td>
+                            <td><span title="{{ $header->deskripsi }}" style="cursor:pointer">{{str_limit($header->deskripsi,40,' ...')}}</span></td>
                         </tr>
                     </table>
                 </div>
@@ -47,6 +47,11 @@
                             <td>Tanggal Bayar</td>
                             <td>&nbsp;&nbsp;&nbsp;</td>
                             <td>{{ ( $header->payment_date != null) ? date('d-m-Y',strtotime($header->payment_date)) : '-' }}</td>
+                        </tr>
+                        <tr>
+                            <td>Rincian</td>
+                            <td>&nbsp;&nbsp;&nbsp;</td>
+                            <td>{{ ( $header->rincian != null) ? $header->rincian : '-' }}</td>
                         </tr>
                     </table>
                 </div>

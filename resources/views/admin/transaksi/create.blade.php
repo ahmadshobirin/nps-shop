@@ -50,8 +50,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="">Alamat</label>
-                                <textarea id="alamat-customer" rows="1"  class="form-control input-sm" readonly></textarea>
+                                <label for="">Rincian</label>
+                                <textarea  rows="1"  class="form-control input-sm" name="rincian"></textarea>
                             </div>
                         </div>
                     </div>
@@ -193,7 +193,7 @@
                 success : function(customer){
                     console.log(customer);
                     $('#telpon-customer').val(customer.telephone);
-                    $('#alamat-customer').val(customer.address);
+                    //$('#alamat-customer').val(customer.address);
                 },
             });
         });

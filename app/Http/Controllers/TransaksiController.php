@@ -98,6 +98,7 @@ class TransaksiController extends Controller
 				'source' => $request->source,
 				'deskripsi' => $request->deskripsi,
 				'grand_total' => $request->total,
+				'rincian' => $request->rincian,
 				'type' => $request->type,
 			]);
 
@@ -179,6 +180,7 @@ class TransaksiController extends Controller
 						'type' => $request->type,
 						'payment_date' => date('Y-m-d',strtotime($request->payment_date)),
 						'deskripsi' => $request->deskripsi,
+						'rincian' => $request->rincian,
 					]);
 
 				DB::commit();				

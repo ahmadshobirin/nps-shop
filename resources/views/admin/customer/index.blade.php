@@ -24,7 +24,7 @@
                     <tr>
                         <th>No.</th>
                         <th>Nama Customer</th>
-                        <th>Alamat</th>
+                        {{--  <th>Alamat</th>  --}}
                         <th>Telpon</th>
                         <th class="nosort">Aksi</th>
                     </tr>
@@ -35,7 +35,7 @@
                         <tr>
                             <td>{{ $i++ }}</td>
                             <td>{{ $value->name }}</td>
-                            <td>{{ $value->address }}</td>
+                            {{--  <td>{{ $value->address }}</td>  --}}
                             <td>{{ $value->telephone }}</td>
                             <td>
                                 <a href="{{ route('customer.edit',$value->id) }}" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Ubah"><span class="fa fa-pencil"></span></a>
@@ -65,7 +65,7 @@
     <script type="text/javascript">
         $('#table').DataTable({
             "columnDefs": [
-            { "orderable": false, "targets": 4 }
+            { "orderable": false, "targets": 3 }
          ]
         });
 
