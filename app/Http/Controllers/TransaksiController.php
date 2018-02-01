@@ -138,7 +138,7 @@ class TransaksiController extends Controller
 				->select('d_transaksi.*','m_produk.name as produk','m_produk.code','m_kategori_produk.name as kategori')
 				->where('transaksi_id',$id)
 				->get();
-		// dd($detail);
+		// dd($header);
 		return view('admin.transaksi.detail',compact('header','detail'));
 	}
 

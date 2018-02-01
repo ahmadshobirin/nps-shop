@@ -45,7 +45,7 @@
     <p align="center" style="font-size: 24px;font-family: arial; margin-bottom:2px;">Laporan Penjualan<br> <small> </small></p>
     <p align="center" style="font-size: 12px;font-family: arial; margin-bottom:2px;">Periode {{$tglmulai}} - {{$tglsampai}}</p>
     <br>
-    <table id="myTbl" style="border-collapse:collapse; width:100%">
+    <table id="myTbl" style="border-collapse:collapse; width:100%; table-layout: fixed;">
         <thead>
             <tr>
                 <th>Tanggal Beli</th>
@@ -72,17 +72,17 @@
                 ?>
                 <tr>
                     <td width="10%">{{ date('d-m-Y',strtotime($result->date_transaction)) }}</td>
-                    <td>{{ $result->customer }}</td>
-                    <td>{{ ($result->type == 'paid') ? 'Lunas' : 'Hutang' }}</td>
+                    <td width="7%">{{ $result->customer }}</td>
+                    <td width="7%">{{ ($result->type == 'paid') ? 'Lunas' : 'Hutang' }}</td>
                     <td width="10%">{{ ($result->payment_date != null) ? date('d-m-Y',strtotime($result->payment_date)) : '-'  }}</td>
                     {{--  <td>{{ ucfirst($result->source) }}</td>  --}}
-                    <td>{{ ucfirst($result->rincian) }}</td>
-                    <td>{{ ucfirst($result->produk) }}</td>
+                    <td width="7%" style="word-wrap: break-word;">{{ ucfirst($result->rincian) }}</td>
+                    <td width="7%" style="word-wrap: break-word;">{{ ucfirst($result->produk) }}</td>
                     <td width="12%" style="text-align:right;">Rp.{{ number_format($result->subTotal,0,'.','.') }}</td>
                     <td width="12%" style="text-align:right;">Rp.{{ number_format($result->purchase_price,0,'.','.') }}</td>
                     <td width="12%" style="text-align:right;">Rp. {{ number_format($subTotal)}}</td>
-                    <td>{{ ucfirst($result->source) }}</td>                    
-                    <td>{{ ucfirst(str_limit($result->deskripsi,20,' ...')) }}</td>
+                    <td width="7%" style="word-wrap: break-word;">{{ ucfirst($result->source) }}</td>                    
+                    <td width="7%" style="word-wrap: break-word;">{{ ucfirst($result->deskripsi) }}</td>
                 </tr>
             @endforeach
         </tbody>
