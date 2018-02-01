@@ -19,6 +19,7 @@ class CreateTableTTransaksi extends Migration
             $table->datetime('date_transaction')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->datetime('payment_date')->nullable();
             $table->string('source',50)->nullable();
+            $table->string('rincian',150)->nullable();
             $table->enum('type', ['paid', 'unpaid'])->default('unpaid');
             $table->text('deskripsi')->nullable();
             $table->integer('grand_total');

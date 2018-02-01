@@ -37,10 +37,10 @@
                         <input type="text" name="telephone" class="form-control" placeholder="Telpon..." maxlength="13" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
                     </div>
 
-                    <div class="form-group">
+                    {{--  <div class="form-group">
                         <label class="control-label">Alamat <span class="required">*</span></label>
                         <textarea name="address" class="form-control" placeholder="Alamat..." required></textarea>
-                    </div>
+                    </div>  --}}
                 </div>
 
                 <div class="box-footer">
