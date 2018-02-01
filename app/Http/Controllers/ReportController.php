@@ -29,7 +29,7 @@ class ReportController extends Controller
 
         $results = $query->get();
         // dd($results,$request->all());
-        return view('admin.transaksi.report',compact('results','tglmulai','tglsampai'));
+        //return view('admin.transaksi.report',compact('results','tglmulai','tglsampai'));
         $pdf = PDF::loadview('admin.transaksi.report',['results' => $results,'tglmulai' => $tglmulai,'tglsampai' => $tglsampai]);
         $pdf->setPaper('A4', 'landscape');
 
