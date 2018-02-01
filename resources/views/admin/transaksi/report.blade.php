@@ -45,7 +45,7 @@
     <p align="center" style="font-size: 24px;font-family: arial; margin-bottom:2px;">Laporan Penjualan<br> <small> </small></p>
     <p align="center" style="font-size: 12px;font-family: arial; margin-bottom:2px;">Periode {{$tglmulai}} - {{$tglsampai}}</p>
     <br>
-    <table id="myTbl" style="border-collapse:collapse; width:100%; table-layout: fixed;">
+    <table id="myTbl" style="border-collapse:collapse; width:100%; table-layout: fixed; font-size: 12px;font-family: arial">
         <thead>
             <tr>
                 <th>Tanggal Beli</th>
@@ -92,6 +92,8 @@
                 <td style="border:none; text-align:right; padding-right:12px;"><b> Rp. {{ number_format($totalBeli)}} </b></td>
                 <td style="border:none; text-align:right; padding-right:12px;"> <b> Rp. {{ number_format($totalJual)}} </b></td>
                 <td style="border:none; text-align:right; padding-right:12px;"> <b> Rp. {{ number_format($totalLaba)}} </b></td>
+                <td style="border-right:none; border-bottom:none; border-left:none; border-top:1px solid #000000;"></td>
+                <td style="border-right:none; border-bottom:none; border-left:none;  border-top:1px solid #000000;"></td>
             </tr>
         </tfoot>
     </table>
