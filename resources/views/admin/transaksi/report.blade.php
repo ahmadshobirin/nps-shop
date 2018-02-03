@@ -71,16 +71,16 @@
                     $totalLaba = $totalLaba +   $subTotal;
                 ?>
                 <tr>
-                    <td width="10%">{{ date('d-m-Y',strtotime($result->date_transaction)) }}</td>
+                    <td width="9%">{{ date('d-m-Y',strtotime($result->date_transaction)) }}</td>
                     <td width="7%">{{ $result->customer }}</td>
                     <td width="7%">{{ ($result->type == 'paid') ? 'Lunas' : 'Hutang' }}</td>
-                    <td width="10%">{{ ($result->payment_date != null) ? date('d-m-Y',strtotime($result->payment_date)) : '-'  }}</td>
+                    <td width="9%">{{ ($result->payment_date != null) ? date('d-m-Y',strtotime($result->payment_date)) : '-'  }}</td>
                     {{--  <td>{{ ucfirst($result->source) }}</td>  --}}
                     <td width="7%" style="word-wrap: break-word;">{{ ucfirst($result->rincian) }}</td>
                     <td width="7%" style="word-wrap: break-word;">{{ ucfirst($result->produk) }}</td>
-                    <td width="12%" style="text-align:right;">Rp.{{ number_format($result->subTotal,0,'.','.') }}</td>
-                    <td width="12%" style="text-align:right;">Rp.{{ number_format($result->purchase_price,0,'.','.') }}</td>
-                    <td width="12%" style="text-align:right;">Rp. {{ number_format($subTotal)}}</td>
+                    <td width="13%" style="text-align:right;">Rp.{{ number_format($result->subTotal,0,'.','.') }}</td>
+                    <td width="13%" style="text-align:right;">Rp.{{ number_format($result->purchase_price,0,'.','.') }}</td>
+                    <td width="13%" style="text-align:right;">Rp. {{ number_format($subTotal)}}</td>
                     <td width="7%" style="word-wrap: break-word;">{{ ucfirst($result->source) }}</td>                    
                     <td width="7%" style="word-wrap: break-word;">{{ ucfirst($result->deskripsi) }}</td>
                 </tr>
