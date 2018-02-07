@@ -120,6 +120,7 @@ class TransaksiController extends Controller
 			DB::commit();
 		}catch(\Exception $e){
 			DB::rollback();
+			dd($e);
 		}
 
 		return redirect()->route('transaksi.index');

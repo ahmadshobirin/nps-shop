@@ -89,8 +89,8 @@
         <tfoot >
             <tr>
                 <td style="border:none; text-align:right; padding-right:12px;" colspan="6">Grand Total </b></td>
-                <td style="border:none; text-align:right; padding-right:12px;"><b> Rp. {{ number_format($totalBeli)}} </b></td>
-                <td style="border:none; text-align:right; padding-right:12px;"> <b> Rp. {{ number_format($totalJual)}} </b></td>
+                <td style="border:none; text-align:right; padding-right:12px;"><b> Rp. {{ number_format($totalJual)}} </b></td>
+                <td style="border:none; text-align:right; padding-right:12px;"> <b> Rp. {{ number_format($totalBeli)}} </b></td>
                 <td style="border:none; text-align:right; padding-right:12px;"> <b> Rp. {{ number_format($totalLaba)}} </b></td>
                 <td style="border-right:none; border-bottom:none; border-left:none; border-top:1px solid #000000;"></td>
                 <td style="border-right:none; border-bottom:none; border-left:none;  border-top:1px solid #000000;"></td>
