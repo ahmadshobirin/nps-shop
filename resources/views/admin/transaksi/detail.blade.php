@@ -24,11 +24,11 @@
                             <td>&nbsp;&nbsp;</td>
                             <td>{{$header->telephone}}</td>
                         </tr>
-                        <tr>
+                       {{--  <tr>
                             <td>Keterangan</td>
                             <td>&nbsp;&nbsp;</td>
                             <td><span title="{{ $header->deskripsi }}" style="cursor:pointer">{{str_limit($header->deskripsi,40,' ...')}}</span></td>
-                        </tr>
+                        </tr> --}}
                     </table>
                 </div>
                 <div class="col-md-4 col-md-offset-4">
